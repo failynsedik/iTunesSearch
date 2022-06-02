@@ -1,0 +1,21 @@
+PODS:
+  - ServiceKit (0.1.0)
+
+DEPENDENCIES:
+  - ServiceKit (from `https://github.com/failynsedik/ServiceKit.git`)
+
+EXTERNAL SOURCES:
+  ServiceKit:
+    :git: https://github.com/failynsedik/ServiceKit.git
+
+CHECKOUT OPTIONS:
+  ServiceKit:
+    :commit: 3931d46d1021894b63d1f6f7fa87d0e640b0e0d8
+    :git: https://github.com/failynsedik/ServiceKit.git
+
+SPEC CHECKSUMS:
+  ServiceKit: 6c701bd367962870528fe9700858186ebc60f24d
+
+PODFILE CHECKSUM: 4d18bb6af7cb21d1a309537b0276d9d9a928276b
+
+COCOAPODS: 1.10.2

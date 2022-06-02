@@ -1,0 +1,6 @@
+framework module ServiceKit {
+  umbrella header "ServiceKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "ServiceKit",
+  "version": "0.1.0",
+  "summary": "A short description of ServiceKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/failynsedik/ServiceKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "failynsedik": "failynsedik@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/failynsedik/ServiceKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "15.0"
+  },
+  "source_files": "ServiceKit/Classes/**/*"
+}
