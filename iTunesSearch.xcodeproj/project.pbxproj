@@ -18,6 +18,7 @@
 		3B531A5B2849198600E67948 /* PrimaryGenreName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A5A2849198600E67948 /* PrimaryGenreName.swift */; };
 		3B531A5D2849199200E67948 /* ContentAdvisoryRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A5C2849199200E67948 /* ContentAdvisoryRating.swift */; };
 		3B531A6128491AE100E67948 /* DummyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A6028491AE100E67948 /* DummyView.swift */; };
+		3B531A6528491D6000E67948 /* UIApplication+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A6428491D6000E67948 /* UIApplication+Keyboard.swift */; };
 		C7FB0F043C527C1A561E8E2E /* Pods_iTunesSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64053E060C0889E5318620F3 /* Pods_iTunesSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		3B531A5A2849198600E67948 /* PrimaryGenreName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryGenreName.swift; sourceTree = "<group>"; };
 		3B531A5C2849199200E67948 /* ContentAdvisoryRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAdvisoryRating.swift; sourceTree = "<group>"; };
 		3B531A6028491AE100E67948 /* DummyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyView.swift; sourceTree = "<group>"; };
+		3B531A6428491D6000E67948 /* UIApplication+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Keyboard.swift"; sourceTree = "<group>"; };
 		64053E060C0889E5318620F3 /* Pods_iTunesSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF3D08F0E550AD6D695E839 /* Pods-iTunesSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesSearch.release.xcconfig"; path = "Target Support Files/Pods-iTunesSearch/Pods-iTunesSearch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 				3B531A442849168E00E67948 /* ContentView.swift */,
 				3B531A502849186D00E67948 /* Network */,
 				3B531A5E28491AC900E67948 /* Modules */,
+				3B531A6328491D4900E67948 /* Extensions */,
 				3B531A6228491D1F00E67948 /* Resources */,
 				3B531A482849169100E67948 /* Preview Content */,
 			);
@@ -141,6 +144,14 @@
 				3B531A462849169100E67948 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3B531A6328491D4900E67948 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3B531A6428491D6000E67948 /* UIApplication+Keyboard.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		412B2F5EBACA39D2CCEA6E53 /* Pods */ = {
@@ -271,6 +282,7 @@
 				3B531A452849168E00E67948 /* ContentView.swift in Sources */,
 				3B531A432849168E00E67948 /* iTunesSearchApp.swift in Sources */,
 				3B531A6128491AE100E67948 /* DummyView.swift in Sources */,
+				3B531A6528491D6000E67948 /* UIApplication+Keyboard.swift in Sources */,
 				3B531A522849187600E67948 /* SearchEndpoint.swift in Sources */,
 				3B531A572849196E00E67948 /* Media.swift in Sources */,
 				3B531A592849197D00E67948 /* Kind.swift in Sources */,
