@@ -57,7 +57,7 @@ struct ContentView: View {
 	}
 	
 	var search: some View {
-		DummyView()
+		SearchView()
 			.tabItem {
 				Image(systemName: TabItem.search.iconName)
 				Text(TabItem.search.title)
