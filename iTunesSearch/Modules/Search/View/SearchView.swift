@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct SearchView: View {
-    var body: some View {
+	var body: some View {
 		ScrollView(.vertical, showsIndicators: true) {
 			LazyVStack {
 				SearchBarView()
 				SearchListView(searchResults: [])
 			}
 		}
-		.navigationTitle(ContentView.TabItem.search.title)
-    }
+	}
 }
 
 struct SearchView_Previews: PreviewProvider {

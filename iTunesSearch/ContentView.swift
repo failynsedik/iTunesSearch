@@ -57,11 +57,15 @@ struct ContentView: View {
 	}
 	
 	var search: some View {
-		SearchView()
-			.tabItem {
-				Image(systemName: TabItem.search.iconName)
-				Text(TabItem.search.title)
-			}
+		NavigationView {
+			SearchView()
+				.navigationTitle(TabItem.search.title)
+		}
+		.navigationViewStyle(StackNavigationViewStyle())
+		.tabItem {
+			Image(systemName: TabItem.search.iconName)
+			Text(TabItem.search.title)
+		}
 	}
 	
 	var tones: some View {
