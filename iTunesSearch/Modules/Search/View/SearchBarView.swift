@@ -9,6 +9,9 @@ import Combine
 import SwiftUI
 
 struct SearchBarView: View {
+	@Binding var text: String
+	var onSearch: () -> Void
+	
 	@StateObject private var debounceObject = DebounceObject()
 	@State private var showCancelButton: Bool = false
 	
@@ -20,7 +23,8 @@ struct SearchBarView: View {
 					showCancelButton = true
 				})
 				.onChange(of: debounceObject.debouncedText, perform: { newValue in
-					// TODO: Search API
+					text = newValue
+					onSearch()
 				})
 				.foregroundColor(.primary)
 				
@@ -67,8 +71,10 @@ final class DebounceObject: ObservableObject {
 }
 
 struct SearchBarView_Previews: PreviewProvider {
+	@State static var term = "star"
+	
 	static var previews: some View {
-		SearchBarView()
+		SearchBarView(text: $term, onSearch: {})
 			.previewLayout(.fixed(width: 350, height: 70))
 	}
 }

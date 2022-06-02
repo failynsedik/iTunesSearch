@@ -11,13 +11,15 @@ struct SearchListView: View {
 	var searchResults: [Media]
 	
     var body: some View {
-		List {
-			ForEach(searchResults) { item in
-				SearchItemView(item: item)
+		ScrollView {
+			LazyVStack(alignment: .leading) {
+				ForEach(searchResults) { item in
+					SearchItemView(item: item)
+				}
 			}
 		}
 		.resignKeyboardOnDragGesture()
-    }
+	}
 }
 
 struct SearchListView_Previews: PreviewProvider {
