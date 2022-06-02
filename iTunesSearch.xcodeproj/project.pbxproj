@@ -12,6 +12,11 @@
 		3B531A472849169100E67948 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B531A462849169100E67948 /* Assets.xcassets */; };
 		3B531A4A2849169100E67948 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B531A492849169100E67948 /* Preview Assets.xcassets */; };
 		3B531A522849187600E67948 /* SearchEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A512849187600E67948 /* SearchEndpoint.swift */; };
+		3B531A552849195C00E67948 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A542849195C00E67948 /* SearchResponse.swift */; };
+		3B531A572849196E00E67948 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A562849196E00E67948 /* Media.swift */; };
+		3B531A592849197D00E67948 /* Kind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A582849197D00E67948 /* Kind.swift */; };
+		3B531A5B2849198600E67948 /* PrimaryGenreName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A5A2849198600E67948 /* PrimaryGenreName.swift */; };
+		3B531A5D2849199200E67948 /* ContentAdvisoryRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A5C2849199200E67948 /* ContentAdvisoryRating.swift */; };
 		C7FB0F043C527C1A561E8E2E /* Pods_iTunesSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64053E060C0889E5318620F3 /* Pods_iTunesSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +28,11 @@
 		3B531A462849169100E67948 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B531A492849169100E67948 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3B531A512849187600E67948 /* SearchEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndpoint.swift; sourceTree = "<group>"; };
+		3B531A542849195C00E67948 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		3B531A562849196E00E67948 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		3B531A582849197D00E67948 /* Kind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kind.swift; sourceTree = "<group>"; };
+		3B531A5A2849198600E67948 /* PrimaryGenreName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryGenreName.swift; sourceTree = "<group>"; };
+		3B531A5C2849199200E67948 /* ContentAdvisoryRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentAdvisoryRating.swift; sourceTree = "<group>"; };
 		64053E060C0889E5318620F3 /* Pods_iTunesSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF3D08F0E550AD6D695E839 /* Pods-iTunesSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesSearch.release.xcconfig"; path = "Target Support Files/Pods-iTunesSearch/Pods-iTunesSearch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,8 +99,21 @@
 			isa = PBXGroup;
 			children = (
 				3B531A512849187600E67948 /* SearchEndpoint.swift */,
+				3B531A532849194700E67948 /* Model */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		3B531A532849194700E67948 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3B531A542849195C00E67948 /* SearchResponse.swift */,
+				3B531A562849196E00E67948 /* Media.swift */,
+				3B531A582849197D00E67948 /* Kind.swift */,
+				3B531A5A2849198600E67948 /* PrimaryGenreName.swift */,
+				3B531A5C2849199200E67948 /* ContentAdvisoryRating.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		412B2F5EBACA39D2CCEA6E53 /* Pods */ = {
@@ -216,9 +239,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B531A552849195C00E67948 /* SearchResponse.swift in Sources */,
+				3B531A5B2849198600E67948 /* PrimaryGenreName.swift in Sources */,
 				3B531A452849168E00E67948 /* ContentView.swift in Sources */,
 				3B531A432849168E00E67948 /* iTunesSearchApp.swift in Sources */,
 				3B531A522849187600E67948 /* SearchEndpoint.swift in Sources */,
+				3B531A572849196E00E67948 /* Media.swift in Sources */,
+				3B531A592849197D00E67948 /* Kind.swift in Sources */,
+				3B531A5D2849199200E67948 /* ContentAdvisoryRating.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
