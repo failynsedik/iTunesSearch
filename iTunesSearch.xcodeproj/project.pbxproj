@@ -82,9 +82,9 @@
 			children = (
 				3B531A422849168E00E67948 /* iTunesSearchApp.swift */,
 				3B531A442849168E00E67948 /* ContentView.swift */,
-				3B531A462849169100E67948 /* Assets.xcassets */,
 				3B531A502849186D00E67948 /* Network */,
 				3B531A5E28491AC900E67948 /* Modules */,
+				3B531A6228491D1F00E67948 /* Resources */,
 				3B531A482849169100E67948 /* Preview Content */,
 			);
 			path = iTunesSearch;
@@ -133,6 +133,14 @@
 			children = (
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		3B531A6228491D1F00E67948 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3B531A462849169100E67948 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		412B2F5EBACA39D2CCEA6E53 /* Pods */ = {
