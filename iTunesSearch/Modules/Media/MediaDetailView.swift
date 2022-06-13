@@ -43,9 +43,9 @@ struct MediaDetailView: View {
 				Text(item.longDescription)
 				Spacer()
 			}
-			Spacer()
+			.padding()
 		}
-		.padding()
+		.navigationBarTitleDisplayMode(.inline)
     }
 }
 
