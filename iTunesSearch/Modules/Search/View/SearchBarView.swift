@@ -9,7 +9,12 @@ import Combine
 import SwiftUI
 
 struct SearchBarView: View {
+	
+	/// This holds the search query.
 	@Binding var text: String
+	
+	/// Completion after user ended typing after the debounce. Default debounce
+	/// is 0.5 seconds. See `DebounceObject` for more details.
 	var onSearch: () -> Void
 	
 	@StateObject private var debounceObject = DebounceObject()
@@ -40,6 +45,7 @@ struct SearchBarView: View {
 			.background(Color(.secondarySystemBackground))
 			.cornerRadius(10.0)
 			
+			// Show if editing changed and hide after tapping the button
 			if showCancelButton  {
 				Button("Cancel") {
 					UIApplication.shared.endEditing(true)
