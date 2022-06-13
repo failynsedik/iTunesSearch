@@ -21,7 +21,7 @@ struct SearchView: View {
 			ZStack {
 				switch viewModel.state {
 				case .idle:
-					Text("Empty")
+					Text("Start searching...")
 					
 				case .loading:
 					ProgressView()
@@ -29,7 +29,8 @@ struct SearchView: View {
 				case .failed(let error):
 					Text(error.localizedDescription)
 					
-				case .loaded:
+				case .loaded, .ended, .loadingMore:
+					// Handle these states inside SearchListView
 					SearchListView(searchViewModel: viewModel)
 				}
 			}

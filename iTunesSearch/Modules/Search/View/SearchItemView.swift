@@ -12,7 +12,7 @@ struct SearchItemView: View {
 	
 	var body: some View {
 		HStack(alignment: .top, spacing: 16) {
-			AsyncImage(url: URL(string: item.artworkUrl100 ?? "")) { image in
+			AsyncImage(url: URL(string: item.artworkUrl100)) { image in
 				image
 					.resizable()
 					.aspectRatio(contentMode: .fit)
@@ -27,7 +27,7 @@ struct SearchItemView: View {
 				Text(item.primaryGenreName)
 					.font(.caption)
 					.foregroundColor(.gray)
-				Text("\(item.currency) \(item.trackPrice, specifier: "%.2f")")
+				Text(item.trackPrice)
 					.foregroundColor(.accentColor)
 			}
 			
@@ -39,9 +39,13 @@ struct SearchItemView: View {
 
 struct SearchItemView_Previews: PreviewProvider {
 	static var previews: some View {
+		let viewModel = SearchViewModel()
+		let item0 = viewModel.formatDataModel(SampleData().searchResponse.results[0])
+		let item1 = viewModel.formatDataModel(SampleData().searchResponse.results[1])
+		
 		Group {
-			SearchItemView(item: SampleData().searchResponse.results[0])
-			SearchItemView(item: SampleData().searchResponse.results[1])
+			SearchItemView(item: item0)
+			SearchItemView(item: item1)
 		}
 		.previewLayout(.fixed(width: 350, height: 120))
 	}

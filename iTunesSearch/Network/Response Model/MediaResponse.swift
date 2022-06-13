@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MediaResponse: Codable, Identifiable {
+class MediaResponse: Codable {
 	let id: Int
 	let artistName: String?
 	let trackName: String?
@@ -40,13 +40,5 @@ class MediaResponse: Codable, Identifiable {
 		self.primaryGenreName = primaryGenreName
 		self.shortDescription = shortDescription
 		self.longDescription = longDescription
-	}
-}
-
-// MARK: - Equatable
-
-extension Media: Equatable {
-	static func == (lhs: Media, rhs: Media) -> Bool {
-		return lhs.id == rhs.id
 	}
 }
