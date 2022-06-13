@@ -30,8 +30,11 @@ struct ContentView: View {
 		}
 	}
 	
+	/// Default selected tab
+	@State private var selection = 3
+	
     var body: some View {
-		TabView {
+		TabView(selection: $selection) {
 			music
 			movies
 			search
@@ -46,6 +49,7 @@ struct ContentView: View {
 				Image(systemName: TabItem.music.iconName)
 				Text(TabItem.music.title)
 			}
+			.tag(1)
 	}
 	
 	var movies: some View {
@@ -54,6 +58,7 @@ struct ContentView: View {
 				Image(systemName: TabItem.movies.iconName)
 				Text(TabItem.movies.title)
 			}
+			.tag(2)
 	}
 	
 	var search: some View {
@@ -66,6 +71,7 @@ struct ContentView: View {
 			Image(systemName: TabItem.search.iconName)
 			Text(TabItem.search.title)
 		}
+		.tag(3)
 	}
 	
 	var tones: some View {
@@ -74,6 +80,7 @@ struct ContentView: View {
 				Image(systemName: TabItem.tones.iconName)
 				Text(TabItem.tones.title)
 			}
+			.tag(4)
 	}
 	
 	var favorites: some View {
@@ -89,6 +96,7 @@ struct ContentView: View {
 			Image(systemName: TabItem.favorites.iconName)
 			Text(TabItem.favorites.title)
 		}
+		.tag(5)
 	}
 }
 
