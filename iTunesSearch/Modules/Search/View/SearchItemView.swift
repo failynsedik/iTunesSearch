@@ -12,7 +12,7 @@ struct SearchItemView: View {
 	
 	var body: some View {
 		HStack(alignment: .top, spacing: 16) {
-			AsyncImage(url: URL(string: item.artworkUrl100)) { image in
+			AsyncImage(url: URL(string: item.artworkUrl100 ?? "")) { image in
 				image
 					.resizable()
 					.aspectRatio(contentMode: .fit)
@@ -24,8 +24,11 @@ struct SearchItemView: View {
 			VStack(alignment: .leading, spacing: 8) {
 				Text(item.trackName)
 					.font(.title2)
-				Text(item.primaryGenreName.rawValue)
+				Text(item.primaryGenreName)
 					.font(.caption)
+					.foregroundColor(.gray)
+				Text("\(item.currency) \(item.trackPrice, specifier: "%.2f")")
+					.foregroundColor(.accentColor)
 			}
 			
 			Spacer()
