@@ -9,13 +9,13 @@ import Foundation
 
 class SearchResponse: Codable {
 	let resultCount: Int
-	let results: [Media]
+	let results: [MediaResponse]
 	
 	enum CodingKeys: String, CodingKey {
 		case resultCount, results
 	}
 	
-	init(resultCount: Int, results: [Media]) {
+	init(resultCount: Int, results: [MediaResponse]) {
 		self.resultCount = resultCount
 		self.results = results
 	}

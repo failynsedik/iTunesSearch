@@ -7,21 +7,19 @@
 
 import Foundation
 
-class Media: Codable, Identifiable {
+class MediaResponse: Codable, Identifiable {
 	let id: Int
-	let kind: Kind
-	let artistName: String
-	let trackName: String
+	let artistName: String?
+	let trackName: String?
 	let artworkUrl100: String?
-	let trackPrice: Double
-	let currency: String
-	let primaryGenreName: String
+	let trackPrice: Double?
+	let currency: String?
+	let primaryGenreName: String?
 	let shortDescription: String?
 	let longDescription: String?
 	
 	enum CodingKeys: String, CodingKey {
 		case id = "trackId"
-		case kind
 		case artistName
 		case trackName
 		case artworkUrl100
@@ -32,9 +30,8 @@ class Media: Codable, Identifiable {
 		case longDescription
 	}
 	
-	init(id: Int, kind: Kind, artistName: String, trackName: String, artworkUrl100: String?, trackPrice: Double, currency: String, primaryGenreName: String, shortDescription: String?, longDescription: String?) {
+	init(id: Int, artistName: String?, trackName: String?, artworkUrl100: String?, trackPrice: Double?, currency: String?, primaryGenreName: String?, shortDescription: String?, longDescription: String?) {
 		self.id = id
-		self.kind = kind
 		self.artistName = artistName
 		self.trackName = trackName
 		self.artworkUrl100 = artworkUrl100
@@ -43,5 +40,13 @@ class Media: Codable, Identifiable {
 		self.primaryGenreName = primaryGenreName
 		self.shortDescription = shortDescription
 		self.longDescription = longDescription
+	}
+}
+
+// MARK: - Equatable
+
+extension Media: Equatable {
+	static func == (lhs: Media, rhs: Media) -> Bool {
+		return lhs.id == rhs.id
 	}
 }
