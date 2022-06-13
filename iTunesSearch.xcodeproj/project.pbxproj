@@ -100,6 +100,7 @@
 				3B531A442849168E00E67948 /* ContentView.swift */,
 				3B531A5E28491AC900E67948 /* Modules */,
 				3B531A502849186D00E67948 /* Network */,
+				3B531A832849FD6600E67948 /* SharedViews */,
 				3B531A6328491D4900E67948 /* Extensions */,
 				3B531A6228491D1F00E67948 /* Resources */,
 				3B531A482849169100E67948 /* Preview Content */,
@@ -140,7 +141,6 @@
 			isa = PBXGroup;
 			children = (
 				3B531A5F28491AD200E67948 /* Search */,
-				3B531A6028491AE100E67948 /* DummyView.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -189,6 +189,14 @@
 				3B531A70284921A300E67948 /* SearchItemView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		3B531A832849FD6600E67948 /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+				3B531A6028491AE100E67948 /* DummyView.swift */,
+			);
+			path = SharedViews;
 			sourceTree = "<group>";
 		};
 		412B2F5EBACA39D2CCEA6E53 /* Pods */ = {
