@@ -11,29 +11,30 @@ struct SearchView: View {
 	@ObservedObject private var viewModel = SearchViewModel()
 	
 	var body: some View {
-		ScrollView(.vertical, showsIndicators: true) {
-			LazyVStack {
-				SearchBarView(text: $viewModel.searchTerm, onSearch: {
-					viewModel.search()
-				})
-				
+		VStack {
+			SearchBarView(text: $viewModel.searchTerm, onSearch: {
+				viewModel.search()
+			})
+			
+			Spacer()
+			
+			ZStack {
 				switch viewModel.state {
 				case .idle:
-					// TODO: Center align and maybe consider an image
 					Text("Empty")
 					
 				case .loading:
-					// TODO: Center align
 					ProgressView()
 					
 				case .failed(let error):
-					// TODO: Center align
 					Text(error.localizedDescription)
 					
-				case .loaded(let searchResults):
-					SearchListView(searchResults: searchResults)
+				case .loaded:
+					SearchListView(searchViewModel: viewModel)
 				}
 			}
+			
+			Spacer()
 		}
 	}
 }
