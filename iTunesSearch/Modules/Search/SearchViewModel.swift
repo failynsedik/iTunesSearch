@@ -163,4 +163,12 @@ extension SearchViewModel {
 		
 		return media
 	}
+	
+	func bindingForId(id: Int, from fetchedFavoriteMediaList: FetchedResults<FavoriteMedia>) -> Binding<Bool> {
+		if let _ = fetchedFavoriteMediaList.first(where: { Int($0.id) == id }) {
+			return .constant(true)
+		} else {
+			return .constant(false)
+		}
+	}
 }

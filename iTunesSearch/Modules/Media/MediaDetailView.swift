@@ -37,7 +37,7 @@ struct MediaDetailView: View {
 					
 					Spacer()
 					
-					FavoriteButton(isSet: isFavorite, onTapFavorite: onTapFavorite)
+					FavoriteButton(isSet: $isFavorite, onTapFavorite: onTapFavorite)
 				}
 				Divider()
 				Text(item.longDescription)

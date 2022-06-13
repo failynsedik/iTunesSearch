@@ -20,18 +20,22 @@ struct SearchListView: View {
 	var body: some View {
 		ScrollView {
 			LazyVStack(alignment: .leading) {
-				// FIXME: Detail to master favorite
-				
 				// Item
 				ForEach(searchViewModel.searchResults) { item in
 					NavigationLink(destination: MediaDetailView(item: item, isFavorite: isFavorite(item), onTapFavorite: {
 						toggleFavorite(item)
 					})) {
-						SearchItemView(item: item, isFavorite: item.isFavorite, onTapFavorite: {
-							toggleFavorite(item)
-						})
-						.onAppear {
-							searchViewModel.loadMoreContentIfNeeded(currentItem: item)
+						HStack(alignment: .top) {
+							SearchItemView(item: item, isFavorite: item.isFavorite, onTapFavorite: {
+								toggleFavorite(item)
+							})
+							.onAppear {
+								searchViewModel.loadMoreContentIfNeeded(currentItem: item)
+							}
+							FavoriteButton(isSet: searchViewModel.bindingForId(id: item.id, from: fetchedFavoriteMediaList), onTapFavorite: {
+								toggleFavorite(item)
+							})
+							.padding()
 						}
 					}
 					.buttonStyle(PlainButtonStyle())

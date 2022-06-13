@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoriteButton: View {
-	@State var isSet: Bool
+	@Binding var isSet: Bool
 	var onTapFavorite: () -> Void
 	
 	var body: some View {

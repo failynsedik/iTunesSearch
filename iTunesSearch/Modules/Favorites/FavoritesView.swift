@@ -25,9 +25,16 @@ struct FavoritesView: View {
 				NavigationLink(destination: MediaDetailView(item: item, isFavorite: isFavorite(item), onTapFavorite: {
 					toggleFavorite(item)
 				})) {
-					SearchItemView(item: item, isFavorite: isFavorite(item), onTapFavorite: {
-						toggleFavorite(item)
-					})
+					HStack(alignment: .top) {
+						SearchItemView(item: item, isFavorite: item.isFavorite, onTapFavorite: {
+							toggleFavorite(item)
+						})
+						
+						FavoriteButton(isSet: searchViewModel.bindingForId(id: item.id, from: fetchedFavoriteMediaList), onTapFavorite: {
+							toggleFavorite(item)
+						})
+						.padding()
+					}
 				}.buttonStyle(PlainButtonStyle())
 			}
 		}

@@ -34,8 +34,6 @@ struct SearchItemView: View {
 			}
 			
 			Spacer()
-			
-			FavoriteButton(isSet: isFavorite, onTapFavorite: onTapFavorite)
 		}
 		.padding()
 	}
