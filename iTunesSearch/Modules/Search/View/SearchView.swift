@@ -29,7 +29,10 @@ struct SearchView: View {
 				case .failed(let error):
 					Text(error.localizedDescription)
 					
-				case .loaded, .ended, .loadingMore:
+				case .empty:
+					Text("Uh Oh! No search results found!")
+					
+				case .loadingMore, .loaded, .ended:
 					// Handle these states inside SearchListView
 					SearchListView(searchViewModel: viewModel)
 				}

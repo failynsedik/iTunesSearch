@@ -15,6 +15,7 @@ class SearchViewModel: ObservableObject {
 		case loadingMore
 		case failed(Error)
 		case loaded([Media])
+		case empty
 		case ended
 	}
 	
@@ -89,8 +90,14 @@ class SearchViewModel: ObservableObject {
 				offset += response.results.count
 				state = .loaded(searchResults)
 			} else {
-				// If search results is empty, end searching.
-				state = .ended
+				if offset == 0 {
+					// If there are no search results and this is only the
+					// first search, then show empty instead.
+					state = .empty
+				} else {
+					// If subsequent results are empty, end searching.
+					state = .ended
+				}
 			}
 			
  		case .failure(let error):
