@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SearchItemView: View {
-	var item: Media
+	@State var item: Media
+	@State var isFavorite: Bool
+	var onTapFavorite: () -> Void
 	
 	var body: some View {
 		HStack(alignment: .top, spacing: 16) {
@@ -32,21 +34,10 @@ struct SearchItemView: View {
 			}
 			
 			Spacer()
+			
+			FavoriteButton(isSet: isFavorite, onTapFavorite: onTapFavorite)
 		}
 		.padding()
 	}
 }
 
-struct SearchItemView_Previews: PreviewProvider {
-	static var previews: some View {
-		let viewModel = SearchViewModel()
-		let item0 = viewModel.formatDataModel(SampleData().searchResponse.results[0])
-		let item1 = viewModel.formatDataModel(SampleData().searchResponse.results[1])
-		
-		Group {
-			SearchItemView(item: item0)
-			SearchItemView(item: item1)
-		}
-		.previewLayout(.fixed(width: 350, height: 120))
-	}
-}

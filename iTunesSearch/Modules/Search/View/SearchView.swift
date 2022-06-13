@@ -20,6 +20,10 @@ struct SearchView: View {
 			
 			ZStack {
 				switch viewModel.state {
+				case .loadingMore, .loaded, .ended:
+					// Handle these states inside SearchListView
+					SearchListView(searchViewModel: viewModel, favoritesViewModel: FavoritesViewModel())
+					
 				case .idle:
 					Text("Start searching...")
 					
@@ -31,10 +35,6 @@ struct SearchView: View {
 					
 				case .empty:
 					Text("Uh Oh! No search results found!")
-					
-				case .loadingMore, .loaded, .ended:
-					// Handle these states inside SearchListView
-					SearchListView(searchViewModel: viewModel)
 				}
 			}
 			
@@ -44,7 +44,7 @@ struct SearchView: View {
 }
 
 struct SearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchView()
-    }
+	static var previews: some View {
+		SearchView()
+	}
 }

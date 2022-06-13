@@ -5,7 +5,7 @@
 //  Created by Failyn Kaye Sedik on 6/13/22.
 //
 
-import Foundation
+import SwiftUI
 
 class Media: Identifiable {
 	let id: Int
@@ -17,6 +17,7 @@ class Media: Identifiable {
 	let primaryGenreName: String
 	let shortDescription: String
 	let longDescription: String
+	var isFavorite: Bool = false
 	
 	init(id: Int, artistName: String, trackName: String, artworkUrl100: String, trackPrice: String, primaryGenreName: String, shortDescription: String, longDescription: String) {
 		self.id = id

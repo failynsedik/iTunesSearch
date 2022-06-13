@@ -7,6 +7,9 @@
 
 import Foundation
 import ServiceKit
+import SwiftUI
+import Combine
+import CoreData
 
 class SearchViewModel: ObservableObject {
 	enum State {
@@ -25,6 +28,10 @@ class SearchViewModel: ObservableObject {
 	@Published private(set) var state = State.idle
 	
 	private var offset = 0
+	
+	// If UserDefaults usage gets bigger, create a utility for this.
+	let defaults = UserDefaults.standard
+	let defaultsKey = "FavoriteMediaList"
 	
 	func search() {
 		// If the search term is empty, do not call the API and
@@ -107,6 +114,27 @@ class SearchViewModel: ObservableObject {
 	}
 }
 
+// MARK: - Favorite
+
+extension SearchViewModel {
+	func getSavedFavoriteMediaIdList() -> [Int]? {
+		if let favoriteMediaIdList = defaults.array(forKey: defaultsKey) as? [Int] {
+			return favoriteMediaIdList
+		} else {
+			return nil
+		}
+	}
+	
+	func isFavorite(media: Media) -> Bool {
+		if let savedFavoriteMediaIdList = getSavedFavoriteMediaIdList(),
+		   let _ = savedFavoriteMediaIdList.first(where: { $0 == media.id }) {
+			return true
+		} else {
+			return false
+		}
+	}
+}
+
 // MARK: - Data Model Conversion
 
 extension SearchViewModel {
@@ -120,7 +148,7 @@ extension SearchViewModel {
 		let currency = model.currency ?? "AUD"
 		let trackPrice = String(format: "%.2f", model.trackPrice ?? 0.00)
 		
-		return Media(
+		let media = Media(
 			id: model.id,
 			artistName: model.artistName ?? "N/A",
 			trackName: model.trackName ?? "N/A",
@@ -130,5 +158,9 @@ extension SearchViewModel {
 			shortDescription: model.shortDescription ?? "N/A",
 			longDescription: model.longDescription ?? "N/A"
 		)
+		
+		media.isFavorite = isFavorite(media: media)
+		
+		return media
 	}
 }

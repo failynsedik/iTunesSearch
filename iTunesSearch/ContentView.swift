@@ -13,7 +13,7 @@ struct ContentView: View {
 		case movies
 		case search
 		case tones
-		case more
+		case favorites
 		
 		var title: String {
 			return self.rawValue.capitalized
@@ -25,7 +25,7 @@ struct ContentView: View {
 			case .movies: return "film.fill"
 			case .search: return "magnifyingglass"
 			case .tones: return "bell.fill"
-			case .more: return "ellipsis"
+			case .favorites: return "star"
 			}
 		}
 	}
@@ -36,7 +36,7 @@ struct ContentView: View {
 			movies
 			search
 			tones
-			more
+			favorites
 		}
     }
 	
@@ -76,12 +76,19 @@ struct ContentView: View {
 			}
 	}
 	
-	var more: some View {
-		DummyView()
-			.tabItem {
-				Image(systemName: TabItem.more.iconName)
-				Text(TabItem.more.title)
-			}
+	var favorites: some View {
+		NavigationView {
+			FavoritesView(
+				searchViewModel: SearchViewModel(),
+				favoritesViewModel: FavoritesViewModel()
+			)
+			.navigationTitle(TabItem.favorites.title)
+		}
+		.navigationViewStyle(StackNavigationViewStyle())
+		.tabItem {
+			Image(systemName: TabItem.favorites.iconName)
+			Text(TabItem.favorites.title)
+		}
 	}
 }
 
