@@ -27,6 +27,7 @@
 		3B531A742849234000E67948 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A732849234000E67948 /* SearchView.swift */; };
 		3B531A76284929AB00E67948 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A75284929AB00E67948 /* SearchViewModel.swift */; };
 		3B531A852849FD8B00E67948 /* ImagePlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B531A842849FD8B00E67948 /* ImagePlaceholderView.swift */; };
+		3BEE36D52856DD4B0079F28D /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BEE36D42856DD4B0079F28D /* Media.swift */; };
 		C7FB0F043C527C1A561E8E2E /* Pods_iTunesSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64053E060C0889E5318620F3 /* Pods_iTunesSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		3B531A732849234000E67948 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3B531A75284929AB00E67948 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3B531A842849FD8B00E67948 /* ImagePlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePlaceholderView.swift; sourceTree = "<group>"; };
+		3BEE36D42856DD4B0079F28D /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		64053E060C0889E5318620F3 /* Pods_iTunesSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF3D08F0E550AD6D695E839 /* Pods-iTunesSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesSearch.release.xcconfig"; path = "Target Support Files/Pods-iTunesSearch/Pods-iTunesSearch.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +103,7 @@
 				3B531A422849168E00E67948 /* iTunesSearchApp.swift */,
 				3B531A442849168E00E67948 /* ContentView.swift */,
 				3B531A502849186D00E67948 /* Network */,
+				3BEE36D62856DD4F0079F28D /* Model */,
 				3B531A5E28491AC900E67948 /* Modules */,
 				3B531A832849FD6600E67948 /* SharedViews */,
 				3B531A6328491D4900E67948 /* Extensions */,
@@ -200,6 +203,14 @@
 				3B531A842849FD8B00E67948 /* ImagePlaceholderView.swift */,
 			);
 			path = SharedViews;
+			sourceTree = "<group>";
+		};
+		3BEE36D62856DD4F0079F28D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3BEE36D42856DD4B0079F28D /* Media.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		412B2F5EBACA39D2CCEA6E53 /* Pods */ = {
@@ -340,6 +351,7 @@
 				3B531A572849196E00E67948 /* MediaResponse.swift in Sources */,
 				3B531A742849234000E67948 /* SearchView.swift in Sources */,
 				3B531A6A28491E4900E67948 /* SampleData.swift in Sources */,
+				3BEE36D52856DD4B0079F28D /* Media.swift in Sources */,
 				3B531A71284921A300E67948 /* SearchItemView.swift in Sources */,
 				3B531A592849197D00E67948 /* Kind.swift in Sources */,
 				3B531A5D2849199200E67948 /* ContentAdvisoryRating.swift in Sources */,
