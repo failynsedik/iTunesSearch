@@ -9,13 +9,17 @@ import SwiftUI
 
 struct SearchItemView: View {
 	var item: Media
-	@State private var image: UIImage?
 	
 	var body: some View {
 		HStack(alignment: .top, spacing: 16) {
-			Rectangle()
-				.fill(.gray)
-				.frame(width: 80, height: 100)
+			AsyncImage(url: URL(string: item.artworkUrl100)) { image in
+				image
+					.resizable()
+					.aspectRatio(contentMode: .fit)
+					.frame(maxWidth: 100)
+			} placeholder: {
+				ImagePlaceholderView()
+			}
 			
 			VStack(alignment: .leading, spacing: 8) {
 				Text(item.trackName)
