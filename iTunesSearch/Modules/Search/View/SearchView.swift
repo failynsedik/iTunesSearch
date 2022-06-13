@@ -21,8 +21,11 @@ struct SearchView: View {
 			ZStack {
 				switch viewModel.state {
 				case .loadingMore, .loaded, .ended:
-					// Handle these states inside SearchListView
-					SearchListView(searchViewModel: viewModel, favoritesViewModel: FavoritesViewModel())
+					// Handle this case's states inside SearchListView
+					SearchListView(
+						searchViewModel: viewModel,
+						favoritesViewModel: FavoritesViewModel()
+					)
 					
 				case .idle:
 					Text("Start searching...")

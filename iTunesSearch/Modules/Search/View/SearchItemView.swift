@@ -9,8 +9,6 @@ import SwiftUI
 
 struct SearchItemView: View {
 	@State var item: Media
-	@State var isFavorite: Bool
-	var onTapFavorite: () -> Void
 	
 	var body: some View {
 		HStack(alignment: .top, spacing: 16) {

@@ -5,15 +5,36 @@
 //  Created by Failyn Kaye Sedik on 6/14/22.
 //
 
-import CoreData
+//import CoreData
 import SwiftUI
 
 class FavoritesViewModel: ObservableObject {
+	
 	var managedObjectContext = PersistenceManager.shared.container.viewContext
 	
-	// If UserDefaults usage gets bigger, create a utility for this.
-	let defaults = UserDefaults.standard
-	let defaultsKey = "FavoriteMediaList"
+	func bindingForMediaId(id: Int, from fetchedFavoriteMediaList: FetchedResults<FavoriteMedia>) -> Binding<Bool> {
+		if let _ = fetchedFavoriteMediaList.first(where: { Int($0.id) == id }) {
+			return .constant(true)
+		} else {
+			return .constant(false)
+		}
+	}
+	
+	func isFavorite(id: Int, comparedWith fetchedFavoriteMediaList: FetchedResults<FavoriteMedia>) -> Bool {
+		if let _ = fetchedFavoriteMediaList.first(where: { $0.id == id }) {
+			return true
+		} else {
+			return false
+		}
+	}
+	
+	func toggleFavorite(_ media: Media, on fetchedFavoriteMediaList: FetchedResults<FavoriteMedia>) {
+		if let savedMedia = fetchedFavoriteMediaList.first(where: { $0.id == media.id }) {
+			removeFromFavorites(savedMedia)
+		} else {
+			addToFavorites(media)
+		}
+	}
 	
 	// MARK: - Core Data
 	
@@ -27,43 +48,11 @@ class FavoritesViewModel: ObservableObject {
 		favoriteMedia.primaryGenreName = media.primaryGenreName
 		favoriteMedia.trackLongDescription = media.longDescription
 		favoriteMedia.trackShortDescription = media.shortDescription
-		print("will be saved")
-		saveToUserDefaults(id: Int(favoriteMedia.id))
 		PersistenceManager.shared.save()
 	}
 	
 	func removeFromFavorites(_ media: FavoriteMedia) {
 		managedObjectContext.delete(media)
-		print("will be removed")
-		removeFromUserDefaults(id: Int(media.id))
 		PersistenceManager.shared.save()
-	}
-	
-	// MARK: - User Defaults
-	
-	// NOTE: This approach should be changed.
-	func getSavedFavoriteMediaIdList() -> [Int]? {
-		if let favoriteMediaIdList = defaults.array(forKey: defaultsKey) as? [Int] {
-			return favoriteMediaIdList
-		} else {
-			return nil
-		}
-	}
-
-	// NOTE: This approach should be changed.
-	func saveToUserDefaults(id: Int) {
-		if var favoriteMediaIdList = getSavedFavoriteMediaIdList() {
-			favoriteMediaIdList.append(id)
-			defaults.setValue(favoriteMediaIdList, forKey: defaultsKey)
-		} else {
-			defaults.setValue([id], forKey: defaultsKey)
-		}
-	}
-	
-	// NOTE: This approach should be changed.
-	func removeFromUserDefaults(id: Int) {
-		guard var favoriteMediaIdList = getSavedFavoriteMediaIdList() else { return }
-		favoriteMediaIdList = favoriteMediaIdList.filter({ $0 != id })
-		defaults.setValue(favoriteMediaIdList, forKey: defaultsKey)
 	}
 }

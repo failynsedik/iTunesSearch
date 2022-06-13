@@ -9,78 +9,76 @@ import CoreData
 import SwiftUI
 
 struct SearchListView: View {
+	
 	@StateObject var searchViewModel: SearchViewModel
 	@StateObject var favoritesViewModel: FavoritesViewModel
+	
+	// MARK: - Core Data
 	
 	@FetchRequest(
 		entity: FavoriteMedia.entity(),
 		sortDescriptors: []
 	) var fetchedFavoriteMediaList: FetchedResults<FavoriteMedia>
 	
+	// MARK: - Views
+	
 	var body: some View {
 		ScrollView {
 			LazyVStack(alignment: .leading) {
-				// Item
-				ForEach(searchViewModel.searchResults) { item in
-					NavigationLink(destination: MediaDetailView(item: item, isFavorite: isFavorite(item), onTapFavorite: {
-						toggleFavorite(item)
-					})) {
-						HStack(alignment: .top) {
-							SearchItemView(item: item, isFavorite: item.isFavorite, onTapFavorite: {
-								toggleFavorite(item)
-							})
-							.onAppear {
-								searchViewModel.loadMoreContentIfNeeded(currentItem: item)
-							}
-							FavoriteButton(isSet: searchViewModel.bindingForId(id: item.id, from: fetchedFavoriteMediaList), onTapFavorite: {
-								toggleFavorite(item)
-							})
-							.padding()
-						}
-					}
-					.buttonStyle(PlainButtonStyle())
-				}
+				itemsView
 				
 				// Loading More State
-				if case .loadingMore = searchViewModel.state {
-					HStack {
-						Spacer()
-						ProgressView()
-						Spacer()
-					}
-				}
+				if case .loadingMore = searchViewModel.state { loadingMoreView }
 				
 				// No more search results
-				if case .ended = searchViewModel.state {
-					HStack {
-						Spacer()
-						Text("You've reached the end of the results! 🎉")
-							.font(.caption)
-						Spacer()
-					}
-				}
+				if case .ended = searchViewModel.state { endOfSearchResultsView }
 			}
 		}
 		.resignKeyboardOnDragGesture()
 	}
 	
-	func toggleFavorite(_ media: Media) {
-		if let savedMedia = fetchedFavoriteMediaList.first(where: { $0.id == media.id }) {
-			searchViewModel.searchResults.first(where: { $0.id == media.id })?.isFavorite = false
-			searchViewModel.searchResults = searchViewModel.searchResults
-			favoritesViewModel.removeFromFavorites(savedMedia)
-		} else {
-			searchViewModel.searchResults.first(where: { $0.id == media.id })?.isFavorite = true
-			searchViewModel.searchResults = searchViewModel.searchResults
-			favoritesViewModel.addToFavorites(media)
+	var itemsView: some View {
+		ForEach(searchViewModel.searchResults) { item in
+			NavigationLink(destination: mediaDetailView(with: item)) {
+				HStack(alignment: .top) {
+					SearchItemView(item: item)
+						.onAppear {
+							searchViewModel.loadMoreContentIfNeeded(currentItem: item)
+						}
+					
+					FavoriteButton(isSet: favoritesViewModel.bindingForMediaId(id: item.id, from: fetchedFavoriteMediaList), onTapFavorite: {
+						favoritesViewModel.toggleFavorite(item, on: fetchedFavoriteMediaList)
+					})
+					.padding()
+				}
+			}
+			.buttonStyle(PlainButtonStyle())
 		}
 	}
 	
-	func isFavorite(_ media: Media) -> Bool {
-		if let _ = fetchedFavoriteMediaList.first(where: { $0.id == media.id }) {
-			return true
-		} else {
-			return false
+	func mediaDetailView(with item: Media) -> some View {
+		MediaDetailView(
+			item: item,
+			isFavorite: favoritesViewModel.isFavorite(id: item.id, comparedWith: fetchedFavoriteMediaList),
+			onTapFavorite: {
+				favoritesViewModel.toggleFavorite(item, on: fetchedFavoriteMediaList)
+			})
+	}
+	
+	var loadingMoreView: some View {
+		HStack {
+			Spacer()
+			ProgressView()
+			Spacer()
+		}
+	}
+	
+	var endOfSearchResultsView: some View {
+		HStack {
+			Spacer()
+			Text("You've reached the end of the results! 🎉")
+				.font(.caption)
+			Spacer()
 		}
 	}
 }

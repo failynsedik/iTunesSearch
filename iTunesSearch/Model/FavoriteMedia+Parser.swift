@@ -1,5 +1,5 @@
 //
-//  FavoriteMedia+Parse.swift
+//  FavoriteMedia+Parser.swift
 //  iTunesSearch
 //
 //  Created by Failyn Kaye Sedik on 6/14/22.

@@ -35,7 +35,7 @@ extension SearchEndpoint: EndpointProtocol {
 				"offset": offset,
 				"limit": 10,
 				"country": "au", // Default as per requirement
-				"media": "movie"//"movie&;all"// Default as per requirement
+				"media": "movie" // Default as per requirement
 			]
 			return parameters
 		}

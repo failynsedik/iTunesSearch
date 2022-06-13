@@ -16,34 +16,16 @@ struct MediaDetailView: View {
 		ScrollView {
 			VStack {
 				HStack(alignment: .top) {
-					AsyncImage(url: URL(string: item.artworkUrl100)) { image in
-						image
-							.resizable()
-							.aspectRatio(contentMode: .fit)
-							.frame(maxWidth: 100)
-					} placeholder: {
-						ImagePlaceholderView()
-					}
-					
-					VStack(alignment: .leading, spacing: 8) {
-						Text(item.trackName)
-							.font(.title2)
-						Text(item.primaryGenreName)
-							.font(.caption)
-							.foregroundColor(.gray)
-						Text(item.trackPrice)
-							.foregroundColor(.accentColor)
-					}
-					
+					SearchItemView(item: item)
 					Spacer()
-					
 					FavoriteButton(isSet: $isFavorite, onTapFavorite: onTapFavorite)
+						.padding()
 				}
-				Divider()
-				Text(item.longDescription)
+				Divider().padding(.horizontal)
+				Text(item.longDescription).padding()
 				Spacer()
 			}
-			.padding()
+			
 		}
 		.navigationBarTitleDisplayMode(.inline)
     }

@@ -5,13 +5,12 @@
 //  Created by Failyn Kaye Sedik on 6/3/22.
 //
 
-import Foundation
 import ServiceKit
 import SwiftUI
-import Combine
-import CoreData
 
 class SearchViewModel: ObservableObject {
+	// MARK: - Enums
+	
 	enum State {
 		case idle
 		case loading
@@ -22,17 +21,23 @@ class SearchViewModel: ObservableObject {
 		case ended
 	}
 	
+	// MARK: - Properties
+	
+	// MARK: Published
 	@Published var searchTerm = ""
 	@Published var previousSearchTerm = ""
 	@Published var searchResults: [Media] = []
 	@Published private(set) var state = State.idle
 	
+	// MARK: Mutable
 	private var offset = 0
 	
-	// If UserDefaults usage gets bigger, create a utility for this.
-	let defaults = UserDefaults.standard
-	let defaultsKey = "FavoriteMediaList"
 	
+}
+
+// MARK: - Search
+
+extension SearchViewModel {
 	func search() {
 		// If the search term is empty, do not call the API and
 		// remember to clear up previous search results if any.
@@ -68,16 +73,13 @@ class SearchViewModel: ObservableObject {
 		}
 	}
 	
+	/// Loads more content only if needed. The loading is triggered when the current last result becomes
+	/// visible to the user.
 	func loadMoreContentIfNeeded(currentItem item: Media) {
 		let thresholdIndex = searchResults.index(searchResults.endIndex, offsetBy: -1)
 		if searchResults.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
 			search()
 		}
-	}
-	
-	private func resetSearch() {
-		offset = 0
-		searchResults.removeAll()
 	}
 	
 	private func handleSearchResult(_ result: Result<SearchResponse, Error>) {
@@ -107,35 +109,19 @@ class SearchViewModel: ObservableObject {
 				}
 			}
 			
- 		case .failure(let error):
+		case .failure(let error):
 			resetSearch()
 			state = .failed(error)
 		}
 	}
-}
-
-// MARK: - Favorite
-
-extension SearchViewModel {
-	func getSavedFavoriteMediaIdList() -> [Int]? {
-		if let favoriteMediaIdList = defaults.array(forKey: defaultsKey) as? [Int] {
-			return favoriteMediaIdList
-		} else {
-			return nil
-		}
-	}
 	
-	func isFavorite(media: Media) -> Bool {
-		if let savedFavoriteMediaIdList = getSavedFavoriteMediaIdList(),
-		   let _ = savedFavoriteMediaIdList.first(where: { $0 == media.id }) {
-			return true
-		} else {
-			return false
-		}
+	private func resetSearch() {
+		offset = 0
+		searchResults.removeAll()
 	}
 }
 
-// MARK: - Data Model Conversion
+// MARK: - Parser
 
 extension SearchViewModel {
 	
@@ -159,16 +145,6 @@ extension SearchViewModel {
 			longDescription: model.longDescription ?? "N/A"
 		)
 		
-		media.isFavorite = isFavorite(media: media)
-		
 		return media
-	}
-	
-	func bindingForId(id: Int, from fetchedFavoriteMediaList: FetchedResults<FavoriteMedia>) -> Binding<Bool> {
-		if let _ = fetchedFavoriteMediaList.first(where: { Int($0.id) == id }) {
-			return .constant(true)
-		} else {
-			return .constant(false)
-		}
 	}
 }
